@@ -35,5 +35,6 @@ for i in xrange(0,720,sz):
         w.create_rectangle(i,j,i+sz,j+sz,fill=cl,outline=cl)
 
 
-
+w.postscript('image.ps')
 mainloop()
+
