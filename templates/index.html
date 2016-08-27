@@ -21,8 +21,7 @@
 		$(function(){			
 			$('button').click(function(){				
 				$.getJSON('/_new_art', {}, 
-					function(data){
-						console.log(data);
+					function(data){						
 						$('img').attr('src', data.url);
 					}
 				);
