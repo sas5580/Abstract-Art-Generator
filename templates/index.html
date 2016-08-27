@@ -14,24 +14,19 @@
 
 <body>		
 	<img src = "{{ imgUrl }}">
-	<form action="/newArt" method="post">
-		<button class="btn btn-lg btn-primary" type="button">ANOTHA ONE</button>
-	</form>
+
+	<button href="javascript:void();" class="btn btn-lg btn-primary" type="button">ANOTHA ONE</button>	
 
 	<script type="text/javascript">
 		$(function(){			
 			$('button').click(function(){				
-				$.ajax({
-					url: '/newArt',					
-					type: 'GET',
-					complete: function(xhr, textStatus) {
-			            console.log('done');
-			        },
-
-					error: function(error) {
-						console.log(error);
+				$.getJSON('/_new_art', {}, 
+					function(data){
+						console.log(data);
+						$('img').attr('src', data.url);
 					}
-				});
+				);
+				return false;
 			});
 		});
 	</script>

@@ -1,16 +1,16 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, jsonify
 from imageGenerator import *
 
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/<go>')
-def index(go=None):
-    imgId = None
-    if go:        
-        imgId = generate()     
-        
-    return render_template("index.html", imgUrl = imgId if imgId else getRandImage())
+def index(go=None):       
+    return render_template("index.html", imgUrl = getRandImage())
+
+@app.route('/_new_art')
+def new_art():
+    imgId = generate()
+    return jsonify(url = imgId)
 
 if __name__ == "__main__":    
     app.run()
